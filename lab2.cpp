@@ -1,5 +1,6 @@
  #include <stdio.h>
  #include <libakrypt.h>
+ #include <stdbool.h>
 
 
 ak_uint8* read_file(const char* filename, size_t* length){
@@ -38,7 +39,7 @@ void write_file(const char* filename, ak_uint8* buffer, size_t length) {
 }
 
 
-void encrypt(const char* filename_plain, const char* filename_cipher, bool is_generate_key, const char* password=NULL){
+void encrypt(const char* filename_plain, const char* filename_cipher, bool is_generate_key, const char* password){
     size_t length;
     ak_uint8* plain_data = read_file(filename_plain, &length);
 
@@ -74,7 +75,7 @@ void encrypt(const char* filename_plain, const char* filename_cipher, bool is_ge
 }
 
 
-void decrypt(const char* filename_cipher, const char* filename_plain, bool is_generate_key, const char* password=NULL){
+void decrypt(const char* filename_cipher, const char* filename_plain, bool is_generate_key, const char* password){
     encrypt(filename_cipher, filename_plain, is_generate_key, password);
 }
 
